@@ -3,6 +3,7 @@ import { CreateUserController } from "./controllers/user/createUserController";
 import { AuthUserController } from "./controllers/user/authUserController";
 import { DetailUserController } from "./controllers/user/detailUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController"
+import { ListCategoryController } from "./controllers/category/ListCategoryController"
 
 import { authenticated } from "./middlewares/authenticated";
 
@@ -16,5 +17,7 @@ router.get("/me", authenticated, new DetailUserController().handle);
 
 //routas de categoria
 router.post("/category", authenticated, new CreateCategoryController().handle)
+
+router.get("/category", authenticated, new ListCategoryController().handle);
 
 export { router };
