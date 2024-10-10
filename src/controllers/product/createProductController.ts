@@ -10,15 +10,14 @@ class CreateProductController {
     if (!req.file) {
       throw new Error("A foto do produto precisa ser enviada!");
     } else {
-      const { originalname, filename } = req.file;
-      console.log(filename);
+      const { originalname, filename: banner } = req.file;
 
       const product = await createProductController.execute({
         name,
         price,
         description,
         category_id,
-        banner: "",
+        banner,
       });
 
       return res.json(product);
