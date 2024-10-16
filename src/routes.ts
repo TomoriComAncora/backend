@@ -7,6 +7,7 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 import { CreateProductController } from "./controllers/product/createProductController";
 import { ListByCategoryController } from "./controllers/product/listByCategoryController";
+import { CreateOrderController } from "./controllers/order/createOrderController";
 
 import { authenticated } from "./middlewares/authenticated";
 import uploadconfig from "./config/multer";
@@ -33,6 +34,13 @@ router.post(
   new CreateProductController().handle
 );
 
-router.get("/category/product", authenticated, new ListByCategoryController().handle);
+router.get(
+  "/category/product",
+  authenticated,
+  new ListByCategoryController().handle
+);
+
+//rotas de pedidos
+router.post("/order", authenticated, new CreateOrderController().handle);
 
 export { router };
