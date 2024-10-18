@@ -8,6 +8,7 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { CreateProductController } from "./controllers/product/createProductController";
 import { ListByCategoryController } from "./controllers/product/listByCategoryController";
 import { CreateOrderController } from "./controllers/order/createOrderController";
+import { RemoveOrderController } from "./controllers/order/removeOrderController"
 
 import { authenticated } from "./middlewares/authenticated";
 import uploadconfig from "./config/multer";
@@ -42,5 +43,6 @@ router.get(
 
 //rotas de pedidos
 router.post("/order", authenticated, new CreateOrderController().handle);
+router.delete("/order", authenticated, new RemoveOrderController().handle);
 
 export { router };
