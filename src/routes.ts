@@ -3,12 +3,16 @@ import multer from "multer";
 import { CreateUserController } from "./controllers/user/createUserController";
 import { AuthUserController } from "./controllers/user/authUserController";
 import { DetailUserController } from "./controllers/user/detailUserController";
+
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
+
 import { CreateProductController } from "./controllers/product/createProductController";
 import { ListByCategoryController } from "./controllers/product/listByCategoryController";
+
 import { CreateOrderController } from "./controllers/order/createOrderController";
 import { RemoveOrderController } from "./controllers/order/removeOrderController"
+import {AddItemController} from "./controllers/order/addItemController"
 
 import { authenticated } from "./middlewares/authenticated";
 import uploadconfig from "./config/multer";
@@ -44,5 +48,6 @@ router.get(
 //rotas de pedidos
 router.post("/order", authenticated, new CreateOrderController().handle);
 router.delete("/order", authenticated, new RemoveOrderController().handle);
+router.post("/order/add", authenticated, new AddItemController().handle)
 
 export { router };
