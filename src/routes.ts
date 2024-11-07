@@ -17,6 +17,7 @@ import { RemoveItensController } from "./controllers/order/removeItensController
 import { SendOrderController } from "./controllers/order/sendOrderController";
 import { ListOrdersController } from "./controllers/order/listOrdersController";
 import { DetailsOrderController } from "./controllers/order/detailsOrderController";
+import { FinishOrderController } from "./controllers/order/finishOrderController";
 
 import { authenticated } from "./middlewares/authenticated";
 import uploadconfig from "./config/multer";
@@ -49,5 +50,6 @@ router.delete("/order/remove", authenticated, new RemoveItensController().handle
 router.put("/order/send", authenticated, new SendOrderController().handle);
 router.get("/orders", authenticated, new ListOrdersController().handle);
 router.get("/orders/details", authenticated, new DetailsOrderController().handle);
+router.put("/order/finish", authenticated, new FinishOrderController().handle);
 
 export { router };
